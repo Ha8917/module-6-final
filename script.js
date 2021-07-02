@@ -3,9 +3,9 @@ var getUserRepos = function(user) {
 var apiUrl = "https://api.github.com/users/" + user + "/repos";
 //make a request to the url
     fetch(apiUrl).then(function(response){
-        response.json().then(function(data){
-            console.log(data);
-        });
+        response.json().then(function(data) {
+            displayRepos(data, user);
+          });
     });
   };
 
@@ -27,3 +27,8 @@ if(username){
 };
 
 userFormEl.addEventListener("submit", formSubmitHandler);
+
+var displayRepos = function(repos, searchTerm) {
+    console.log(repos);
+    console.log(searchTerm);
+}
