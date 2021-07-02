@@ -9,17 +9,21 @@ var apiUrl = "https://api.github.com/users/" + user + "/repos";
     });
   };
 
+var userFormEl = document.querySelector("#user-form");
+var nameInputEl = document.querySelector("#username");
 
+var formSubmitHandler = function(event) {
+    event.preventDefault();
+//get value from input element
+var username = nameInputEl.value.trim();
 
-//var response = fetch("https://api.github.com/users/octocat/repos");
- // console.log(response);
+if(username){
+    getUserRepos(username);
+    nameInputEl = "";
+} else {
+    alert("Please enter GitHub username");
+}
+    console.log(event);
+};
 
-//fetch("https://api.github.com/users/octocat/repos").then(function(response) {
- //   response.json().then(function(data) {
-   //     console.log(data);
-    //});
-//});
-
-//console.log("outside")
-
-  
+userFormEl.addEventListener("submit", formSubmitHandler);
